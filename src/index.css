@@ -35,7 +35,7 @@ ul li {
   border: 0;
   border-radius: 20px;
   padding-left: 30px;
-  background: #ededed;
+  background: #cfced5;
 }
 
 .send {
@@ -51,6 +51,21 @@ ul li {
 }
 
 .messages-list-frame{
-  overflow-y: scroll;
-  height: 550px;
+  position: absolute;
+  background: #cfced5;
+  width: 100%;
+}
+
+.panel {
+  position: fixed;
+  z-index: 10000;
+  padding: 40px 0 40px 0;
+  width: 100%;
+  bottom: 0;
+  background: #fff;
+}
+
+.fixer {
+  min-height: 200px;
+  width: 100%;
 }

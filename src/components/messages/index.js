@@ -57,14 +57,15 @@ class MessagesPage extends Component {
     console.log(this.state, "state")
     return (
       <div className='App'>
-        <div className='wrapper'>
           <h1>Chat</h1>
           <div className="messages-list-frame">
             <ul className='chat-logs'>
               { this.renderChatLog() }
             </ul>
+            <div className="fixer"></div>
           </div>
           <div className="panel">
+          <div className='wrapper'>
           <input
             onKeyPress={ (e) => this.handleChatInputKeyPress(e) }
             value={ this.state.currentChatMessage }
@@ -78,7 +79,7 @@ class MessagesPage extends Component {
             Send
           </button>
           </div>
-        </div>
+          </div>
       </div>
     );
   }
