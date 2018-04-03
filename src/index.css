@@ -9,12 +9,6 @@ ul li {
   list-style: none;
 }
 
-button:active {
-  outline: none;
-  cursor: pointer;
-  outline: none !important
-}
-
 .wrapper {
   padding-left: 15%;
   padding-right: 15%;
