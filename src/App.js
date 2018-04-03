@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 import Cable from 'actioncable';
+import { connect } from 'react-redux';
+import { getMessages } from './actions/messages';
 
 class App extends Component {
   constructor(props) {
@@ -13,6 +15,12 @@ class App extends Component {
 
   componentWillMount() {
     this.createSocket();
+    this.props.onGetMessages(this.state.chatLogs);
+    // this.setState({chatLogs: })
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({ chatLogs: nextProps.chatLogs });
   }
 
   createSocket() {
@@ -46,13 +54,18 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.props, "***************")
+    console.log(this.state, "state")
     return (
       <div className='App'>
         <div className='wrapper'>
           <h1>Chat</h1>
-          <ul className='chat-logs'>
-            { this.renderChatLog() }
-          </ul>
+          <div className="messages-list-frame">
+            <ul className='chat-logs'>
+              { this.renderChatLog() }
+            </ul>
+          </div>
+          <div className="panel">
           <input
             onKeyPress={ (e) => this.handleChatInputKeyPress(e) }
             value={ this.state.currentChatMessage }
@@ -65,6 +78,7 @@ class App extends Component {
             className='send'>
             Send
           </button>
+          </div>
         </div>
       </div>
     );
@@ -91,4 +105,13 @@ class App extends Component {
   }
 }
 
-export default App;
+export default connect(
+  state => ({
+    chatLogs: state.messages.chatLogs
+  }),
+    dispatch => ({
+    onGetMessages: () => {
+      dispatch(getMessages());
+    }
+  })
+)(App);

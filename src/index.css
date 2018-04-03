@@ -55,3 +55,8 @@ button:active {
   border-radius: 32px;
   margin-left: 10px;
 }
+
+.messages-list-frame{
+  overflow-y: scroll;
+  height: 550px;
+}
