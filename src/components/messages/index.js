@@ -75,7 +75,7 @@ class MessagesPage extends Component {
             className='message-input' />
           <button
             onClick={ (e) => this.handleSendEvent(e) }
-            className='send'>
+            className='send-btn'>
             Send
           </button>
           </div>
