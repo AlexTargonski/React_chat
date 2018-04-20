@@ -18,16 +18,28 @@ const history = syncHistoryWithStore(
   store
 );
 
+const token = localStorage.getItem('token')
+
+if (token && token.length === 30) {
 ReactDOM.render(
   <Provider store={store}>
     <Router history={history}>
       <Route path="/" component={App}/>
+    </Router>
+  </Provider>,
+  document.getElementById('root')
+);
+} else {
+  ReactDOM.render(
+  <Provider store={store}>
+    <Router history={history}>
       <Route path="/sign_up" component={SignUp}/>
       <Route path="/login" component={Login}/>
     </Router>
   </Provider>,
   document.getElementById('root')
 );
+}
 
 store.subscribe(() => {
   console.log(store.getState(), "store");
