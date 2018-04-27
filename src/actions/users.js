@@ -20,3 +20,19 @@ export function signUp(user) {
     })
   }
 }
+
+export function emailConfirmation(token) {
+  return function(dispatch, getState) {
+    let body = {user: token};
+    axios.post(`${API_USERS_URL}/email_confirmation`, body, { headers: HEADERS })
+
+    .then(res => {
+      console.log(res.data)
+
+    })
+
+    .catch(error => {
+      console.log(error)
+    })
+  }
+}
